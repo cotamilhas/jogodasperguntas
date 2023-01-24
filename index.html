@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<title>Vamos ver...</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="icon.png">
+</head>
+<body>
+
+    
+<input type="text" id="textbox">
+
+  <h1 id="word">Vamos ver...</h1>
+  
+  <button id="change-word">...</button>
+
+  <script>
+
+
+
+const button = document.getElementById("change-word");
+const h1 = document.getElementById("word");
+const words = ["Sim...", "Não...", "Talvez...", "Provavelmente sim...", "Provavelmente não...", "Não sei, mas provavelmente sim..." , "Não sei, mas provavelmente não..." , "Não sei mas não sei mesmo..."];
+
+function randomWord() {
+if(textbox.value.trim() === ""){
+  alert("Se realmente queres uma resposta, convém fazer uma pergunta. Escreve alguma coisa!")
+  h1.textContent = "Faz uma pergunta.";
+}
+
+
+
+else{
+if (!textbox.value.includes("?")) {
+  alert("Uma pergunta normalmente contém o ponto de interrogação (?).")
+  h1.textContent = "Faz uma pergunta.";
+}
+
+else{
+
+
+
+
+  const word = words[Math.floor(Math.random() * words.length)];
+  h1.innerHTML = word;
+  h1.classList.add("glow");
+  textbox.value = "";
+  setTimeout(() => {
+    h1.classList.remove("glow");
+    h1.textContent = "Vamos. Faz outra pergunta.";
+    
+  }, 1000);
+  }
+  }
+}
+
+button.addEventListener("click", randomWord);
+
+
+        
+  </script>
+
+
+
+
+
+</body>
+</html>
